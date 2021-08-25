@@ -1,7 +1,9 @@
+import FormStudent from "../components/FormStudent";
+
 const AddStudent = () => {
-    return(
+    return (
         <div>
-            Add Student
+            <FormStudent />
         </div>
     )
 }

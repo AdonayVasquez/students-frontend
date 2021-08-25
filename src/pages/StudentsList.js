@@ -1,7 +1,9 @@
+import StudentsList from "../components/StudentsList";
+
 const StudentList = () => {
     return (
         <div>
-            StudentList
+            <StudentsList />
         </div>
     )
 }
