@@ -1,6 +1,5 @@
 import FormStudent from "../components/FormStudent";
-
-const API_URL = 'http://127.0.0.1:3500/api/students';
+import { API_URL } from "../Api";
 
 const AddStudent = () => {
 
