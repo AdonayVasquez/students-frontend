@@ -47,6 +47,15 @@ const FormStudent = (props) => {
         props.handleFormRequest(data);
     }
 
+    const handleClean = () => {
+        setFirstName('');
+        setLastName('');
+        setBirthdate('');
+        setEmail('');
+        setAddress('');
+        setGenre('');
+    }
+
     return (
         <div className="container d-flex justify-content-center">
             <div className="col-10 col-md-6 col-lg-4 mt-5">
@@ -88,8 +97,11 @@ const FormStudent = (props) => {
                             </label>
                         </div>
                     </div>
-
-                    <button type="submit" className="btn btn-success w-25 d-block m-auto">Submit</button>
+                    <div className="d-flex justify-content-center">
+                    <button type="submit" className="btn btn-secondary w-25 mx-2" onClick={handleClean} >Cancel</button>
+                    <button type="submit" className="btn btn-success w-25 mx-2">Submit</button>
+                    </div>
+                   
                 </form>
             </div>
         </div>
