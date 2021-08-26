@@ -24,8 +24,20 @@ const StudentsList = () => {
         console.log('edit', id);
     }
 
-    const handleDeleteStudent = (id) => {
-        console.log('delete', id);
+    const handleDeleteStudent = async (id) => {
+
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'}
+        }
+        try {
+            let response = await fetch(`${API_URL}/${id}`, requestOptions);
+            let res = await response.json();
+            console.log('Res: ', res);
+            getStudents();
+        } catch (error) {
+            console.error('Error: ',error);
+        }
     }
 
     const handleDetails = (student) => {
