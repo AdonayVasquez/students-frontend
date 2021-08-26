@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { actualDate } from "../utilities";
 
 const FormStudent = (props) => {
+    const actualD = actualDate();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -9,42 +12,54 @@ const FormStudent = (props) => {
     const [address, setAddress] = useState('');
     const [genre, setGenre] = useState('');
 
+    const [idStudent, setIdStudent] = useState('');
+    const location = useLocation();
+
+    useEffect(() => {
+        let name = location.state;
+        if (name) {
+            console.log('data to edit',name);
+            setIdStudent(name._id);
+            setFirstName(name.firstName);
+            setLastName(name.lastName);
+            setBirthdate(name.birthdate);
+            setEmail(name.email);
+            setAddress(name.address);
+            setGenre(name.genre);
+        }
+        
+    }, [location.state])
+
     const handleFirstName = (e) => {
         setFirstName(e.target.value);
-        console.log(firstName);
     }
     const handleLastName = (e) => {
         setLastName(e.target.value);
-        console.log(lastName);
     }
     const handleBirthdate = (e) => {
         setBirthdate(e.target.value);
-        console.log(birthdate);
     }
     const handleEmail = (e) => {
         setEmail(e.target.value);
-        console.log(email);
     }
     const handleAddress = (e) => {
         setAddress(e.target.value);
-        console.log(address);
     }
     const handleGenre = (e) => {
         setGenre(e.target.value)
-        console.log(genre);
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        const data = {
+        const data = JSON.stringify({
             firstName:firstName,
             lastName:lastName,
             birthdate:birthdate,
             email:email,
             address:address,
             genre:genre
-        }
-        props.handleFormRequest(data);
+        })
+        props.handleFormRequest(data, idStudent);
         handleClearForm();
     }
 
@@ -71,7 +86,7 @@ const FormStudent = (props) => {
                     </div>
                     <div className="mb-3">
                         <label forhtml="birthdate" className="form-label">Birthdate</label>
-                        <input type="date" className="form-control" id="birthdate" onChange={handleBirthdate} value={birthdate} ></input>
+                        <input type="date" className="form-control" id="birthdate" onChange={handleBirthdate} value={birthdate} max={actualD} ></input>
                     </div>
                     <div className="mb-3">
                         <label forhtml="email" className="form-label">Email</label>
