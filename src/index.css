@@ -16,4 +16,12 @@ code {
 .btn-details {
   color: rgb(117, 117, 224);
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.width-lbl {
+  width: 50%;
+}
+.bold-lbl {
+  font-weight: 600;
 }
