@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.btn-details {
+  color: rgb(117, 117, 224);
+  text-decoration: underline;
+}

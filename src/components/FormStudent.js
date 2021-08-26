@@ -45,9 +45,10 @@ const FormStudent = (props) => {
             genre:genre
         }
         props.handleFormRequest(data);
+        handleClearForm();
     }
 
-    const handleClean = () => {
+    const handleClearForm = () => {
         setFirstName('');
         setLastName('');
         setBirthdate('');
@@ -98,7 +99,7 @@ const FormStudent = (props) => {
                         </div>
                     </div>
                     <div className="d-flex justify-content-center">
-                    <button type="submit" className="btn btn-secondary w-25 mx-2" onClick={handleClean} >Cancel</button>
+                    <button type="submit" className="btn btn-secondary w-25 mx-2" onClick={handleClearForm} >Cancel</button>
                     <button type="submit" className="btn btn-success w-25 mx-2">Submit</button>
                     </div>
                    
