@@ -1,7 +1,16 @@
 import FormStudent from "../components/FormStudent";
 import { API_URL } from "../Api";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const AddStudent = () => {
+
+    const location = useLocation();
+
+    useEffect(() => {
+        let name = location.state;
+        console.log(name);
+    }, [location.state])
 
     const handleFormRequest = async (data) => {
 

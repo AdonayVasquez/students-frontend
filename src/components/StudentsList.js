@@ -13,15 +13,10 @@ const StudentsList = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [studentDetail, setStudentDetail] = useState({});
 
-    /* const history = useHistory();
+    const history = useHistory();
 
-    const sendToEditForm = (student) => {
-        console.log(student);
-        //history.push("/", student)
-    } */
-
-    const handleEditStudent = (id) => {
-        console.log('edit', id);
+    const handleEditStudent = (student) => {
+        history.push("/", student)
     }
 
     const handleDeleteStudent = async (id) => {
@@ -60,7 +55,7 @@ const StudentsList = () => {
             let obj = {
                 id: idx + 1,
                 studentName: student.firstName + ' ' + student.lastName,
-                edit: <i className="fas fa-edit" onClick={() => handleEditStudent(student._id)} />,
+                edit: <i className="fas fa-edit" onClick={() => handleEditStudent(student)} />,
                 delete: <i className="fas fa-trash-alt" onClick={() => handleDeleteStudent(student._id)} />,
                 viewDetails: <p className="btn-details" onClick={() => handleDetails(student)}>details</p>
             }
